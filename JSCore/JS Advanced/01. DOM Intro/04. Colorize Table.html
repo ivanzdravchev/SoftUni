@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+</head>
+
+<body>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Town</th>
+        </tr>
+        <tr>
+            <td>Eve</td>
+            <td>Sofia</td>
+        </tr>
+        <tr>
+            <td>Nick</td>
+            <td>Varna</td>
+        </tr>
+        <tr>
+            <td>Didi</td>
+            <td>Ruse</td>
+        </tr>
+        <tr>
+            <td>Tedy</td>
+            <td>Varna</td>
+        </tr>
+    </table>
+    <button onclick="colorize()">Colorize</button>
+    <script>
+        function colorize() {
+            let rows = document.querySelectorAll('table tr:nth-child(even)');
+            for (let row of rows) {
+                row.style.backgroundColor = 'teal';
+            }
+        }
+    </script>
+</body>
+
+</html>
