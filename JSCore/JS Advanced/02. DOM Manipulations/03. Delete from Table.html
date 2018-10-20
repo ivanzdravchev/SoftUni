@@ -41,6 +41,7 @@ Email: <input type="text" name="email" />
             if (mail.textContent == searchedMail) {
                 mail.parentNode.parentNode.removeChild(mail.parentNode);
                 document.getElementById('result').textContent = "Deleted.";
+				return;
             }
         }
         document.getElementById('result').textContent = "Not found.";
