@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+</head>
+
+<body>
+    <h1>List of Items</h1>
+    <ul id="items">
+    </ul>
+    <input type="text" id="newText" />
+    <input type="button" value="Add" onclick="addItem()">
+    <script>
+        function addItem() {
+            let newLi = document.createElement('li');
+            let list = document.getElementById('items');
+            newLi.innerHTML = document.getElementById('newText').value + " <a href='#'>[Delete]</a>";
+            newLi.lastElementChild.addEventListener('click', function() {
+                this.parentNode.parentNode.removeChild(this.parentNode);
+            });
+            list.appendChild(newLi);
+            document.getElementById('newText').value = '';
+        }
+    </script>
+</body>
+
+</html>

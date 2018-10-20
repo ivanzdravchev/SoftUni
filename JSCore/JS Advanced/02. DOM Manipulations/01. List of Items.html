@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+</head>
+
+<body>
+    <h1>List of Items</h1>
+    <ul id="items">
+        <li>First</li>
+        <li>Second</li>
+    </ul>
+    <input type="text" id="newItemText" />
+    <input type="button" value="Add" onclick="addItem()">
+    <script>
+        function addItem() {
+            let input = document.getElementById('newItemText');
+            let list = document.getElementById('items');
+            let newLi = document.createElement('li');
+            newLi.appendChild(document.createTextNode(input.value));
+            list.appendChild(newLi);
+            input.value = '';
+        }
+    </script>
+</body>
+
+</html>

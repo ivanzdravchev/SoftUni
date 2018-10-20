@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+</head>
+
+<body>
+    <div id="time" style="border:3px solid blue; text-align:center; font-size:2em; margin-bottom:10px">00:00</div>
+    <button id="startBtn">Start</button>
+    <button id="stopBtn" disabled="true">Stop</button>
+    <script>
+        window.onload = function () {
+            stopwatch();
+        }
+
+        function stopwatch() {
+            let startBtn = document.getElementById('startBtn');
+            let stopBtn = document.getElementById('stopBtn');
+            let seconds, interval;
+
+            startBtn.addEventListener('click', function () {
+                seconds = 0;
+                document.getElementById('time').textContent = "00:00";
+                interval = setInterval(incrementTime, 1000);
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+            });
+
+            stopBtn.addEventListener('click', function () {
+                clearInterval(interval);
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            });
+
+            function incrementTime() {
+                seconds++;
+                document.getElementById('time').textContent = 
+                ("0" + Math.floor(seconds / 60)).slice(-2) + ':' +
+                ("0" + (seconds % 60)).slice(-2);
+            }
+        }
+    </script>
+</body>
+
+</html>
