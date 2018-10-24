@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+    <style>
+        label,
+        input {
+            display: inline-block;
+            width: 5em;
+        }
+
+        label {
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body onload="attachEventsListeners()">
+    <h1>Distance Converter</h1>
+    <div>
+        <label for="inputDistance">From:</label>
+        <input type="text" id="inputDistance">
+        <select id="inputUnits">
+            <option value="km">Kilometers</option>
+            <option value="m">Meters</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="mi">Miles</option>
+            <option value="yrd">Yards</option>
+            <option value="ft">Feet</option>
+            <option value="in">Inches</option>
+        </select>
+        <input type="button" id="convert" value="Convert">
+    </div>
+    <div>
+        <label for="outputDistance">To:</label>
+        <input type="text" id="outputDistance" disabled="disabled">
+        <select id="outputUnits">
+            <option value="km">Kilometers</option>
+            <option value="m">Meters</option>
+            <option value="cm">Centimeters</option>
+            <option value="mm">Millimeters</option>
+            <option value="mi">Miles</option>
+            <option value="yrd">Yards</option>
+            <option value="ft">Feet</option>
+            <option value="in">Inches</option>
+        </select>
+    </div>
+
+    <script>
+        function attachEventsListeners() {
+            let input = document.getElementById('inputDistance');
+            let from = document.getElementById('inputUnits');
+            let to = document.getElementById('outputUnits');
+            let button = document.getElementById('convert');
+            let resultField = document.getElementById('outputDistance');
+            button.addEventListener('click', function () {
+                let result = input.value;
+                debugger;
+                switch(from.value) {
+                    case 'km': result *= 1000; break;
+                    case 'm': break;
+                    case 'cm': result *= 0.01; break;
+                    case 'mm': result *= 0.001; break;
+                    case 'mi': result *= 1609.34; break;
+                    case 'yrd': result *= 0.9144; break;
+                    case 'ft': result *= 0.3048; break;
+                    case 'in': result *= 0.0254; break;
+                }
+                switch(to.value) {
+                    case 'km': result /= 1000; break;
+                    case 'm': break;
+                    case 'cm': result /= 0.01; break;
+                    case 'mm': result /= 0.001; break;
+                    case 'mi': result /= 1609.34; break;
+                    case 'yrd': result /= 0.9144; break;
+                    case 'ft': result /= 0.3048; break;
+                    case 'in': result /= 0.0254; break;
+                }
+                resultField.value = result;
+            });
+        }
+    </script>
+</body>
+
+</html>
