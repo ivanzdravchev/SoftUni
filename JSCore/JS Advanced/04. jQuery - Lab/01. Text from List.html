@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <ul id="items">
+        <li>first item</li>
+        <li>second item</li>
+        <li>third item</li>
+    </ul>
+    <button onclick="extractText()">Extract Text</button>
+    <div id="result"></div>
+    <script>
+        function extractText() {
+            const result = $('ul#items li').toArray()
+            .map((el) => el.textContent).join(', ');
+            $('#result').text(result);
+        }
+    </script>
+</body>
+
+</html>

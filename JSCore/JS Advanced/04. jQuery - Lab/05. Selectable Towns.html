@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Practice space</title>
+    <style>
+        li {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+        }
+        ul {
+            padding: 0;
+        }
+        .data-selected {
+            background: #DDD;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous">
+    </script>
+</head>
+
+<body>
+    <h2>Towns</h2>
+    <ul id="items">
+        <li>Sofia</li>
+        <li>Varna</li>
+        <li>Plovdiv</li>
+        <li>Bourgas</li>
+        <li>Rousse</li>
+    </ul>
+    <button id="showTownsButton">Show Towns</button>
+    <div id="selectedTowns"></div>
+    <script>
+        $(attachEvents());
+        function attachEvents() {
+            let liElements = $('li').on('click', changeState);
+            let showTowns = $('#showTownsButton').on('click', printTowns);
+
+            function changeState() {
+                $(this).toggleClass('data-selected');
+            }
+
+            function printTowns() {
+                let selectedElements = $('li.data-selected');
+                let result = selectedElements.toArray()
+                    .map(el => el.textContent).join(', ');
+                $('#selectedTowns').text('Selected towns: ' + result);
+            }
+        }
+    </script>
+</body>
+
+</html>
