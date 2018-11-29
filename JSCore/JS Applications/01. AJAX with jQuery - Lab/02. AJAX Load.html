@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="text">
+        <h1>AJAX jQuery.load()</h1>
+        <button onclick="load()">Load Repos</button>
+    </div>
+    
+    <script>
+        function load() {
+            $('#text').load('text.html');
+        }
+    </script>
+</body>
+
+</html>
