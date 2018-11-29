@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Phonebook</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+
+<body>
+    <h1>Phonebook</h1>
+    <ul id="phonebook"></ul>
+    <button id="btnLoad">Load</button>
+
+    <h2>Create Contact</h2>
+    Person: <input type="text" id="person" />
+    <br>
+    Phone: <input type="text" id="phone" />
+    <br>
+    <button id="btnCreate">Create</button>
+    <script src="phonebook.js"></script>
+    <script>(
+        function attachEvents() {
+            $('#btnCreate').click(createEntry);
+            $('#btnLoad').click(loadEntries);
+            let url = 'https://phonebook-7006a.firebaseio.com/phonebook.json';
+
+            function createEntry() {
+                let person = $('#person').val();
+                let phone = $('#phone').val();
+                let data = {
+                    person,
+                    phone
+                };
+                if (person == '' || phone == '') return;
+
+                $.post(url, JSON.stringify(data)).then(() => {
+                    $('#person').val('');
+                    $('#phone').val('');
+                })
+                .then(loadEntries);
+            }
+
+            function loadEntries() {
+                $.get({
+                    url,
+                    method: 'GET',
+                    success: function(data) {
+                        $('#phonebook').empty();
+                        for (let contact in data) {
+                            $('#phonebook').append($('<li>')
+                                .text(`${data[contact].person}: ${data[contact].phone}`)
+                                .append(' <button>[Delete]</button>')
+                                .click(() => deleteEntry(contact)));
+                        }
+                    }
+                });
+            }
+
+            function deleteEntry(id) {
+                let url = `https://phonebook-7006a.firebaseio.com/phonebook/${id}.json`;
+                $.ajax({
+                    method: 'DELETE',
+                    url,
+                    success: loadEntries
+                });
+            }
+        }
+    )();</script>
+</body>
+
+</html>
