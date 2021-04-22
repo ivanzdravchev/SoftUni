@@ -1,2 +1,2 @@
-# SoftUni stuff
-SoftUni courses exercises and exams
+# SoftUni courses
+Exercises and exams from different softuni courses
